@@ -1,0 +1,44 @@
+.wrapper {
+    background-color: var(--white);
+    padding: 1.5rem;
+    width: 100%;
+    border-radius: 4px;
+
+    .header {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem
+        }
+
+        .status {
+            background: var(--grey-120);
+            padding: 2px;
+            border-radius: 2px;
+            font-size: 0.875rem;
+        }
+    }
+
+    .content {
+
+        > p {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .creationInfo {
+            display: flex;
+            justify-content: left;
+            gap: 2.575rem;
+            flex-wrap: nowrap;
+
+            p {
+                font-size: 0.875rem;
+            }
+        }
+    }
+}

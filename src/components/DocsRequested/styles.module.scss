@@ -1,0 +1,22 @@
+.wrapper {
+    max-width: 750px;
+    min-height: 580px;
+    width: 100%;
+    border-radius: 4px;
+
+    background-color: var(--white);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .noDocument {
+        text-align: center;
+        
+        p {
+            margin-top: 1rem;
+            color: var(--grey-200);
+            font-size: 0.875rem;
+        }
+    }
+}

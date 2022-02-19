@@ -4,7 +4,8 @@ Projeto criado utilizando o Vite:
 
 >> yarn (Para instalar as dependências)
 
-Preprocessor Sass
+Pre processador Sass
 
 >> yarn add sass
+
 >> yarn add @types/sass -D

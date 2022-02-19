@@ -1,0 +1,15 @@
+.wrapper {
+    padding-top: 3.5rem;
+    
+    h1 {
+        padding: 24px 0;
+        font-size: 1.5rem
+    }
+
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1 1 530px;
+        gap: 1rem;
+    }
+}
