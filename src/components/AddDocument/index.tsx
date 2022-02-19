@@ -22,7 +22,7 @@ export function AddDocument(){
                         <input type="text" id="cpf" className={styles.formControl} />
                     </div>
                     <div className={styles.formGroup}>
-                        <label htmlFor="name">Nome Completo:</label>
+                        <label htmlFor="name">Nome Completo: *</label>
                         <input type="text" id="name" className={styles.formControl}/>
                     </div>
                     <h5>Dados do cartório</h5>
