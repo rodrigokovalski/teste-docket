@@ -1,7 +1,7 @@
 .wrapper {
     background-color: var(--white);
     padding: 1.5rem;
-    width: 100%;
+    flex: 1 1 100%;
     border-radius: 4px;
 
     .header {
@@ -17,9 +17,11 @@
 
         .status {
             background: var(--grey-120);
-            padding: 2px;
+            padding: 4px 8px;
             border-radius: 2px;
             font-size: 0.875rem;
+            text-align: right;
+            white-space: nowrap
         }
     }
 

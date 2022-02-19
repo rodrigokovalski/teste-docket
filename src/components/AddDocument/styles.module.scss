@@ -1,8 +1,69 @@
 .wrapper {
-    max-width: 530px;
-    width: 100%;
+    flex: 1 1 530px;
     border-radius: 4px;
-    padding: 24px;
-    
-    background: var(--white)
+
+    background: var(--white);
+
+    h4 {
+        border-bottom: 1px solid var(--grey-150);
+        padding: 1.5rem;
+    }
+
+    .formContent {
+        padding: 1.5rem;
+
+        h5 {
+            margin: 1.5rem 0;
+            font-size: 1rem;
+        }
+
+        .formGroup {
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+
+            .formControl {
+                width: 100%;
+                height: 40px;
+                margin-top: 8px;
+                border-radius: 2px;
+                border: 1px solid var(--grey-180);
+            }
+
+            .twoFields {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+
+                .left {
+                    flex: 1 1 auto;
+                }
+                
+                .right {
+                    flex-basis:130px;
+                    flex-wrap: nowrap;
+
+                    @media screen and (max-width: 500px) {
+                        flex-grow: 1;
+                    }
+                }
+            }
+
+            button {
+                display: block;
+                margin-left: auto;
+                padding: 6px 12px;
+                border: none;
+                border-radius: 1rem;
+
+                background-color: var(--blue-button);
+                color: var(--white);
+                font-size: 0.875rem;
+            }
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
 }

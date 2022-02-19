@@ -3,9 +3,7 @@ import styles from './styles.module.scss'
 export function AddDocument(){
     return (
         <div className={styles.wrapper}>
-            <div className={styles.header}>
-                <h4>Adicionar documentos ao pedido</h4>
-            </div>
+            <h4>Adicionar documentos ao pedido</h4>
             <div className={styles.formContent}>
                 <form action="">
                 <div className={styles.formGroup}>
