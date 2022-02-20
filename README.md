@@ -9,3 +9,5 @@ Pre processador Sass
 >> yarn add sass
 
 >> yarn add @types/sass -D
+
+>> yarn add @hookform/resolvers yup react-hook-form

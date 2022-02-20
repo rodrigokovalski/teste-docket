@@ -19,11 +19,12 @@
         }
 
         .formGroup {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-size: 0.875rem;
 
             span {
-                color: #F00;
+                color: var(--error);
+                font-size: 0.75rem;
             }
 
             .formControl {
@@ -34,12 +35,16 @@
                 border: 1px solid var(--grey-180);
                 padding: 6px 12px;
                 font-size: 0.875rem;
+
+                &[data-validate] {
+                    border-color: var(--error);
+                    outline: var(--error);
+                }
             }
 
             .twoFields {
                 display: flex;
                 align-items: center;
-                flex-wrap: wrap;
                 gap: 1.5rem;
 
                 .left {
@@ -53,6 +58,10 @@
                     @media screen and (max-width: 500px) {
                         flex-grow: 1;
                     }
+                }
+
+                @media screen and (max-width: 500px) {
+                    flex-wrap: wrap
                 }
             }
 
