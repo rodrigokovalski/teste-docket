@@ -7,9 +7,9 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 type DocumentData = {
     docName: string;
     personType: string;
-    cpf: number;
+    cpf: string;
     name: string;
-    cep: number;
+    cep: string;
     street: string;
     number: number;
     city: string;
@@ -18,10 +18,10 @@ type DocumentData = {
 
 const createDocumentFormSchema = yup.object().shape({
     docName: yup.string().required('Campo obrigatório'),
-    perstonType: yup.string().required('Campo obrigatório'),
-    cpf: yup.number().required('Campo obrigatório').typeError('Campo obrigatório'),
+    personType: yup.string().default('Pessoa Física'),
+    cpf: yup.string().required('Campo obrigatório'),
     name: yup.string().required('Campo obrigatório'),
-    cep: yup.number().required('Campo obrigatório').typeError('Campo obrigatório'),
+    cep: yup.string().required('Campo obrigatório'),
     street: yup.string().required('Campo obrigatório'),
     number: yup.number().required('Campo obrigatório').typeError('Campo obrigatório'),
     city: yup.string().required('Campo obrigatório'),
@@ -38,9 +38,8 @@ export function AddDocument(){
         resolver: yupResolver(createDocumentFormSchema)
     });
 
-    const handleCreateDocument: SubmitHandler<DocumentData> = async(data) => {
-        console.log(data);
-        alert("Formulário enviado!")
+    const handleCreateDocument: SubmitHandler<DocumentData> = async( values ) => {
+        alert(JSON.stringify(values))
     }
 
     return (
