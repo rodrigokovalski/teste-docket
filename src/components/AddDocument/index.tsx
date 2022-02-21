@@ -1,5 +1,7 @@
 import styles from './styles.module.scss'
 
+import { useState } from 'react'
+
 import { api } from '../../services/api'
 
 import * as yup from 'yup'
@@ -11,54 +13,78 @@ type DocumentData = {
     personType: string;
     cpf: string;
     name: string;
+    cnpj: string;
+    razao: string;
     cep: string;
     street: string;
     number: number;
     city: string;
-    uf: string
+    uf: string,
+    createdAt: Date
 }
 
 const createDocumentFormSchema = yup.object().shape({
     docName: yup.string().required('Campo obrigatório'),
     personType: yup.string().default('Pessoa Física'),
+
     cpf: yup.string().required('Campo obrigatório'),
     name: yup.string().required('Campo obrigatório'),
+    
+    cnpj: yup.string(),
+    razao: yup.string(),
+    
     cep: yup.string().required('Campo obrigatório'),
     street: yup.string().required('Campo obrigatório'),
     number: yup.number().required('Campo obrigatório').typeError('Campo obrigatório'),
     city: yup.string().required('Campo obrigatório'),
     uf: yup.string().required('Campo obrigatório')
-})
+    },  
+    [ [ 'cpf', 'cnpj' ] ]
+);
 
 export function AddDocument(){
+
+    const [ isPersonType , setIsPersonType ] = useState('Pessoa Física');
     
     const { 
         register, 
         handleSubmit, 
-        formState: { errors } 
+        formState: { errors },
+        reset 
     } = useForm<DocumentData>({
         resolver: yupResolver(createDocumentFormSchema)
     });
 
     const handleCreateDocument: SubmitHandler<DocumentData> = async( values ) => {
+        let mes = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+        var today = new Date(),
+            date = today.getDate() + ' de ' + (mes[today.getMonth()]) + ' de ' + today.getFullYear() ;
+            
         api.post('/documents', {
             id: Math.floor(Math.random()),
             docName: values.docName,
             personType: values.personType,
             cpf: values.cpf,
             name: values.name,
+            cnpj: values.cnpj,
+            razao: values.razao,
             cep: values.cep,
             street: values.street,
             number: values.number,
             city: values.city,
-            uf: values.uf
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+            uf: values.uf,
+            createdAt: date
+        })
+        .then(function (response) {
+        console.log(response);
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
+
+        console.log(JSON.stringify(values));
+
+        reset();
     }
 
     return (
@@ -66,6 +92,7 @@ export function AddDocument(){
             <h4>Adicionar documentos ao pedido</h4>
             <div className={styles.formContent}>
                 <form onSubmit={handleSubmit(handleCreateDocument)}>
+
                     <div className={styles.formGroup}>
                         <label htmlFor="docName">Nome do Documento: <span>*</span></label>
                         <input 
@@ -80,6 +107,7 @@ export function AddDocument(){
                         />
                         { errors.docName && <span> { errors.docName.message } </span> }
                     </div>
+
                     <div className={styles.formGroup}>
                         <label htmlFor="personType">Tipo de pessoa: <span>*</span></label>
                         <select 
@@ -89,40 +117,84 @@ export function AddDocument(){
                             className={styles.formControl}
                             data-validate={errors.personType?.message}
                             {...register('personType')}
+                            onChange={ e => {
+                                setIsPersonType(e.target.value)
+                            }}
                         >
                             <option value="Pessoa Física">Pessoa Física</option>
                             <option value="Pessoa Jurídica">Pessoa Jurídica</option>
                         </select>
                     </div>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="cpf">CPF: <span>*</span></label>
-                        <input 
-                            type="tel"
-                            id="cpf" 
-                            // @ts-ignore
-                            name="cpf"
-                            className={styles.formControl} 
-                            placeholder="Digite aqui" 
-                            data-validate={errors.cpf?.message}
-                            {...register('cpf')}
-                        />
-                        { errors.cpf && <span> { errors.cpf.message } </span> }
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="name">Nome Completo: <span>*</span></label>
-                        <input 
-                            type="text" 
-                            id="name" 
-                            // @ts-ignore
-                            name="name"
-                            className={styles.formControl} 
-                            placeholder="Digite aqui" 
-                            data-validate={errors.name?.message}
-                            {...register('name')}
-                        />
-                        { errors.name && <span> { errors.name.message } </span> }
-                    </div>
+
+                    { isPersonType === "Pessoa Física" ? (
+                    <>
+                        <div className={styles.formGroup}>
+                            <label htmlFor="cpf">CPF: <span>*</span></label>
+                            <input 
+                                type="tel"
+                                id="cpf" 
+                                // @ts-ignore
+                                name="cpf"
+                                className={styles.formControl} 
+                                placeholder="Digite aqui" 
+                                data-validate={errors.cpf?.message}
+                                {...register('cpf')}
+                            />
+                            { errors.cpf && <span> { errors.cpf.message } </span> }
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label htmlFor="name">Nome Completo: <span>*</span></label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                // @ts-ignore
+                                name="name"
+                                className={styles.formControl} 
+                                placeholder="Digite aqui" 
+                                data-validate={errors.name?.message}
+                                {...register('name')}
+                            />
+                            { errors.name && <span> { errors.name.message } </span> }
+                        </div>
+                    </>
+                    ) : (
+                    <>
+                        <div className={styles.formGroup}>
+                            <label htmlFor="cnpj">CNPJ: <span>*</span></label>
+                            <input 
+                                type="tel"
+                                id="cnpj" 
+                                // @ts-ignore
+                                name="cnpj"
+                                className={styles.formControl} 
+                                placeholder="Digite aqui" 
+                                data-validate={errors.cnpj?.message}
+                                {...register('cnpj')}
+                            />
+                            { errors.cnpj && <span> { errors.cnpj.message } </span> }
+                        </div>
+
+                        <div className={styles.formGroup}>
+                            <label htmlFor="razao">Razão Social: <span>*</span></label>
+                            <input 
+                                type="text" 
+                                id="razao" 
+                                // @ts-ignore
+                                name="razao"
+                                className={styles.formControl} 
+                                placeholder="Digite aqui" 
+                                data-validate={errors.razao?.message}
+                                {...register('razao')}
+                            />
+                            { errors.razao && <span> { errors.razao.message } </span> }
+                        </div>
+
+                    </>
+                    )}
+
                     <h5>Dados do cartório</h5>
+
                     <div className={styles.formGroup}>
                         <label htmlFor="cep">CEP: <span>*</span></label>
                         <input 
@@ -137,7 +209,9 @@ export function AddDocument(){
                         />
                          { errors.cep && <span> { errors.cep.message } </span> }
                     </div>
+
                     <div className={styles.formGroup}>
+
                         <div className={styles.twoFields}>
                             <div className={styles.left}>
                                 <label htmlFor="street">Rua: <span>*</span></label>
@@ -153,6 +227,7 @@ export function AddDocument(){
                                 />
                                 { errors.street && <span> { errors.street.message } </span> }
                             </div>
+
                             <div className={styles.right}>
                                 <label htmlFor="number">Número: <span>*</span></label>
                                 <input 
@@ -169,8 +244,10 @@ export function AddDocument(){
                             </div>
                         </div>
                     </div>
+
                     <div className={styles.formGroup}>
                         <div className={styles.twoFields}>
+
                             <div className={styles.left}>
                                 <label htmlFor="city">Cidade: <span>*</span></label>
                                 <input 
@@ -185,6 +262,7 @@ export function AddDocument(){
                                 />
                                 { errors.city && <span> { errors.city.message } </span> }
                             </div>
+
                             <div className={styles.right}>
                                 <label htmlFor="uf">UF: <span>*</span></label>
                                 <input 
@@ -199,6 +277,7 @@ export function AddDocument(){
                                 />
                                 { errors.uf && <span> { errors.uf.message } </span> }
                             </div>
+
                         </div>
                     </div>
                     <div className={styles.formGroup}>

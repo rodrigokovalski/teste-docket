@@ -12,11 +12,14 @@ type DocumentData = {
     personType: string;
     cpf: string;
     name: string;
+    cnpj: string;
+    razao: string;
     cep: string;
     street: string;
     number: number;
     city: string;
-    uf: string
+    uf: string,
+    createdAt: Date
 }
 
 export function DocsRequested() {
@@ -79,11 +82,17 @@ export function DocsRequested() {
                                 <div className={styles.registry}>
                                     <h6><strong>Dados do cartório</strong></h6>
                                     <p>CEP: {document.cep}</p>
-                                    <p>Rua: {document.street}</p>
-                                    <p>Cidade: {document.city}</p>
+                                    <div className={styles.flex}>
+                                        <p>Rua: {document.street}</p>
+                                        <p>Nª. {document.number}</p>
+                                    </div>
+                                    <div className={styles.flex}>
+                                        <p>Cidade: {document.city}</p>
+                                        <p>UF: {document.uf}</p>
+                                    </div>
                                 </div>
                                 <div className={styles.createdAt}>
-                                    <p><strong>Data de criação:</strong> 11 de maio de 2021</p>
+                                    <p><strong>Data de criação:</strong> {document.createdAt}</p>
                                 </div>
                             </div>
                         </div>
