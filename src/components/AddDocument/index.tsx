@@ -27,7 +27,7 @@ type DocumentData = {
 }
 
 const createDocumentFormSchema = yup.object().shape({
-    docName: yup.string().required('Campo obrigatório'),
+    docName: yup.string().max(255).required('Campo obrigatório'),
     personType: yup.string().default('Pessoa Física'),
 
     cpf: yup.string()

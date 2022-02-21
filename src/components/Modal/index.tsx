@@ -20,6 +20,8 @@ export function Modal({ closeModal , documentId }: ModalProps){
         }).catch(function(error) {
             console.log(error)
         });
+
+        closeModal(false);
     }   
 
     return (
