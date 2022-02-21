@@ -4,10 +4,12 @@ Projeto criado utilizando o Vite:
 
 >> yarn (Para instalar as dependências)
 
-Pre processador Sass
+Dependencias 
 
 >> yarn add sass
 
->> yarn add @types/sass -D
-
 >> yarn add @hookform/resolvers yup react-hook-form
+
+>> yarn add json-server -D
+
+>> yarn add axios

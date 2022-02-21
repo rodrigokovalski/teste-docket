@@ -1,5 +1,7 @@
 import styles from './styles.module.scss'
 
+import { api } from '../../services/api'
+
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { SubmitHandler, useForm } from 'react-hook-form' 
@@ -39,7 +41,24 @@ export function AddDocument(){
     });
 
     const handleCreateDocument: SubmitHandler<DocumentData> = async( values ) => {
-        alert(JSON.stringify(values))
+        api.post('/documents', {
+            id: Math.floor(Math.random()),
+            docName: values.docName,
+            personType: values.personType,
+            cpf: values.cpf,
+            name: values.name,
+            cep: values.cep,
+            street: values.street,
+            number: values.number,
+            city: values.city,
+            uf: values.uf
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     return (

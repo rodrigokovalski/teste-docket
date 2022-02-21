@@ -39,12 +39,28 @@
                 &[data-validate] {
                     border-color: var(--error);
                     outline: var(--error);
+                    box-shadow: 0 0 0 0 var(--error);
+                    animation: pulse-red 2s infinite;
                 }
+
+                @keyframes pulse-red {
+                    0% {
+                      box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+                    }
+                    
+                    70% {
+                      box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+                    }
+                    
+                    100% {
+                      box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+                    }
+                  }
             }
 
             .twoFields {
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
                 gap: 1.5rem;
 
                 .left {
