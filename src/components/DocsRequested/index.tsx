@@ -75,9 +75,18 @@ export function DocsRequested() {
                             </div>
                             <div className={styles.data}>
                                 <div className={styles.personal}>
-                                    <h6><strong>Pessoa Física</strong></h6>
-                                    <p>Nome: {document.name}</p>
-                                    <p>CPF: {document.cpf}</p>
+                                    <h6><strong>{document.personType}</strong></h6>
+                                    {document.personType === "Pessoa Física" ? (
+                                        <>
+                                            <p>Nome: {document.name}</p>
+                                            <p>CPF: {document.cpf}</p>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <p>Razão Social: {document.razao}</p>
+                                            <p>CNPJ: {document.cnpj}</p>
+                                        </>
+                                    )}   
                                 </div>
                                 <div className={styles.registry}>
                                     <h6><strong>Dados do cartório</strong></h6>

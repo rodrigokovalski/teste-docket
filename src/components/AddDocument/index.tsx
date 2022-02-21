@@ -27,25 +27,28 @@ const createDocumentFormSchema = yup.object().shape({
     docName: yup.string().required('Campo obrigatório'),
     personType: yup.string().default('Pessoa Física'),
 
-    cpf: yup.string().required('Campo obrigatório'),
-    name: yup.string().required('Campo obrigatório'),
-    
-    cnpj: yup.string(),
-    razao: yup.string(),
+    cpf: yup.string()
+        .when('personType', { is: 'Pessoa Física', then: yup.string().required('Campo obrigatório') }),
+    name: yup.string()
+        .when('personType', { is: 'Pessoa Física', then: yup.string().required('Campo obrigatório') }),
+
+    cnpj: yup.string()
+        .when('personType', { is: 'Pessoa Jurídica', then: yup.string().required('Campo obrigatório') }),
+    razao: yup.string()
+        .when('personType', { is: 'Pessoa Jurídica', then: yup.string().required('Campo obrigatório') }),
     
     cep: yup.string().required('Campo obrigatório'),
     street: yup.string().required('Campo obrigatório'),
     number: yup.number().required('Campo obrigatório').typeError('Campo obrigatório'),
     city: yup.string().required('Campo obrigatório'),
     uf: yup.string().required('Campo obrigatório')
-    },  
-    [ [ 'cpf', 'cnpj' ] ]
+    }
 );
 
 export function AddDocument(){
 
     const [ isPersonType , setIsPersonType ] = useState('Pessoa Física');
-    
+
     const { 
         register, 
         handleSubmit, 
