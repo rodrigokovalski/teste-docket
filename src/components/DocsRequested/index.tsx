@@ -5,6 +5,7 @@ import styles from './styles.module.scss'
 
 import DocIcon from '../../assets/doc-icon.svg'
 import RemoveIcon from '../../assets/remove-icon.svg'
+import { Modal } from '../Modal';
 
 type DocumentData = {
     id: number;
@@ -23,6 +24,8 @@ type DocumentData = {
 }
 
 export function DocsRequested() {
+    
+    const [ openModal , setOpenModal ] = useState<boolean>(false);
 
     const [ documents, setDocuments ] = useState<DocumentData[]>([]);
 
@@ -34,12 +37,14 @@ export function DocsRequested() {
     }, [ documents ])
 
     const handleRemove = (id: number) => {
-        api.delete('/documents/'+id)
-        .then(function(response) {
-            console.log(response)
-        }).catch(function(error) {
-            console.log(error)
-        })
+        // api.delete('/documents/'+id)
+        // .then(function(response) {
+        //     console.log(response)
+        // }).catch(function(error) {
+        //     console.log(error)
+        // })
+
+        setOpenModal(true)
     }
 
     if (documents.length === 0) {
@@ -50,10 +55,14 @@ export function DocsRequested() {
                     <p>Nenhum documento criado</p>
                 </div>
             </div>
+            
         )
     } else {
         return (
             <div className={styles.docsRequested}>
+
+                {openModal && <Modal closeModal={setOpenModal} />}
+               
                 <h4>{documents.length} documento{documents.length > 1 && 's'} solicitado{documents.length > 1 && 's'}</h4>
                 
                 {documents.map(document => {

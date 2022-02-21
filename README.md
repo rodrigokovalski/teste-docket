@@ -13,3 +13,5 @@ Dependencias
 >> yarn add json-server -D
 
 >> yarn add axios
+
+>> yarn add toastfy

@@ -22,8 +22,7 @@
     --blue-button: #3570B2;
 
     --error: #FF0000;
-
-    --toastify-toast-background: #00B98E;
+    --red-button: #E65562
 }
 
 @media(max-width: 1000px){
@@ -114,4 +113,44 @@ a, a:hover {
         }
     }
 
+}
+
+.overRideStyle {
+
+    .Toastify__toast-body {
+        margin: 0
+    }
+
+    svg {
+        display: none;
+    }
+
+    .Toastify__toast {
+        background-color: #00B98E;
+        color: var(--white);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        width: 420px;
+        
+        .Toastify__close-button {
+            align-self: center;
+            color: var(--white);
+            background-color: var(#00B98E);
+            background-image: url('../assets/close.svg');
+            opacity: 1;
+            height: 24px;
+            width: 24px;
+        }
+
+        .Toastify--animate-icon {
+            background-image: url('../assets/checked.svg');
+            height: 24px;
+            width: 24px;
+        }
+
+        .Toastify__progress-bar--success {
+            background-color: var(--white)
+        }
+    }
 }

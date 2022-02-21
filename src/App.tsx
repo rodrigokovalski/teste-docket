@@ -1,7 +1,6 @@
 import "./styles/global.scss"
 
 import { PageContent } from "./components/PageContent"
-
 import { ToastContainer } from 'react-toastify';
 
 import Logo from '../src/assets/logo.svg'
@@ -10,17 +9,20 @@ function App() {
 
   return (
     <div id="page">
+      
       <ToastContainer 
         position="top-center"
         autoClose={3000}
-        hideProgressBar={true}
+        hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        className="overRideStyle"
       />
+
       <header>
         <div className="container">
           <div className="logo">
@@ -40,6 +42,7 @@ function App() {
           <p>Docket © 2021</p>
         </div>
       </footer>
+      
     </div>
   )
 }
