@@ -1,5 +1,8 @@
 import styles from './styles.module.scss'
 
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+
 import { useCallback, useState } from 'react'
 
 import { api } from '../../services/api'
@@ -119,7 +122,7 @@ export function AddDocument(){
         console.log(error);
         });
 
-        console.log(JSON.stringify(values));
+        toast.success('Documento criado com sucesso');
 
         reset();
     }
