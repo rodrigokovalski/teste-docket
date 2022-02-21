@@ -1,13 +1,26 @@
 import styles from './styles.module.scss'
 
 import CloseBtn from '../../assets/close-btn.svg'
+import { api } from '../../services/api'
+import { toast } from 'react-toastify';
 
 interface ModalProps {
     closeModal: (active: boolean) => void,
+    documentId?: number
 }
 
-export function Modal({ closeModal }: ModalProps){
+export function Modal({ closeModal , documentId }: ModalProps){
 
+    
+    const deleteDocument = () => {
+        api.delete('/documents/'+documentId)
+        .then(function(response) {
+            console.log(response)
+            toast.success('Documento excluído com sucesso');
+        }).catch(function(error) {
+            console.log(error)
+        });
+    }   
 
     return (
         <div className={styles.modalBackground}>
@@ -25,7 +38,7 @@ export function Modal({ closeModal }: ModalProps){
                     <button className={styles.cancel} onClick={()=>{closeModal(false)}}>
                         Cancelar
                     </button>
-                    <button className={styles.remove}>
+                    <button className={styles.remove} onClick={()=>{deleteDocument()}}>
                         Excluir
                     </button>
                 </div>

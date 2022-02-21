@@ -27,6 +27,8 @@ export function DocsRequested() {
     
     const [ openModal , setOpenModal ] = useState<boolean>(false);
 
+    const [ deleteDocument , setDeleteDocument ] = useState<number>(0);
+
     const [ documents, setDocuments ] = useState<DocumentData[]>([]);
 
     useEffect(()=> {
@@ -37,13 +39,7 @@ export function DocsRequested() {
     }, [ documents ])
 
     const handleRemove = (id: number) => {
-        // api.delete('/documents/'+id)
-        // .then(function(response) {
-        //     console.log(response)
-        // }).catch(function(error) {
-        //     console.log(error)
-        // })
-
+        setDeleteDocument(id)
         setOpenModal(true)
     }
 
@@ -61,7 +57,7 @@ export function DocsRequested() {
         return (
             <div className={styles.docsRequested}>
 
-                {openModal && <Modal closeModal={setOpenModal} />}
+                {openModal && <Modal documentId={deleteDocument} closeModal={setOpenModal} />}
                
                 <h4>{documents.length} documento{documents.length > 1 && 's'} solicitado{documents.length > 1 && 's'}</h4>
                 

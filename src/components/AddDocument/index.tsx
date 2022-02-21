@@ -116,13 +116,12 @@ export function AddDocument(){
             createdAt: date
         })
         .then(function (response) {
-        console.log(response);
+            console.log(response)
+            toast.success('Documento criado com sucesso');
         })
         .catch(function (error) {
         console.log(error);
         });
-
-        toast.success('Documento criado com sucesso');
 
         reset();
     }
