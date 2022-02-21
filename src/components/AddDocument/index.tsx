@@ -1,6 +1,6 @@
 import styles from './styles.module.scss'
 
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import { api } from '../../services/api'
 
@@ -45,9 +45,43 @@ const createDocumentFormSchema = yup.object().shape({
     }
 );
 
+
 export function AddDocument(){
 
     const [ isPersonType , setIsPersonType ] = useState('Pessoa Física');
+
+    const handleCPF = useCallback((e: React.FormEvent<HTMLInputElement>) => {
+        e.currentTarget.maxLength = 14;
+        let v = e.currentTarget.value;
+        v=v.replace(/\D/g,"")                    
+        v=v.replace(/(\d{3})(\d)/,"$1.$2")      
+        v=v.replace(/(\d{3})(\d)/,"$1.$2")   
+        v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+
+        e.currentTarget.value = v;
+    }, [])
+
+    const handleCNPJ = useCallback((e: React.FormEvent<HTMLInputElement>) => {
+        e.currentTarget.maxLength = 18;
+        let v = e.currentTarget.value;
+        v=v.replace(/\D/g,"")                          
+        v=v.replace(/^(\d{2})(\d)/,"$1.$2")             
+        v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3") 
+        v=v.replace(/\.(\d{3})(\d)/,".$1/$2")           
+        v=v.replace(/(\d{4})(\d)/,"$1-$2") 
+
+        e.currentTarget.value = v;
+    }, [])
+
+    const handleCEP = useCallback((e: React.FormEvent<HTMLInputElement>) => {
+        e.currentTarget.maxLength = 9;
+        let v = e.currentTarget.value;
+
+        v=v.replace(/\D/g,"")           
+        v=v.replace(/^(\d{5})(\d)/,"$1-$2")  
+
+        e.currentTarget.value = v;
+    }, [])
 
     const { 
         register, 
@@ -142,6 +176,7 @@ export function AddDocument(){
                                 placeholder="Digite aqui" 
                                 data-validate={errors.cpf?.message}
                                 {...register('cpf')}
+                                onChange={handleCPF}
                             />
                             { errors.cpf && <span> { errors.cpf.message } </span> }
                         </div>
@@ -174,6 +209,7 @@ export function AddDocument(){
                                 placeholder="Digite aqui" 
                                 data-validate={errors.cnpj?.message}
                                 {...register('cnpj')}
+                                onChange={handleCNPJ}
                             />
                             { errors.cnpj && <span> { errors.cnpj.message } </span> }
                         </div>
@@ -209,6 +245,7 @@ export function AddDocument(){
                             placeholder="Digite aqui" 
                             data-validate={errors.cep?.message}
                             {...register('cep')}
+                            onChange={handleCEP}
                         />
                          { errors.cep && <span> { errors.cep.message } </span> }
                     </div>
