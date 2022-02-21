@@ -1,17 +1,26 @@
-Projeto criado utilizando o Vite:
+# Docket - Trabalhe conosco | Dev. Front-end
 
->> yarn create vite my-portfolio --template react-ts (Template que já inclue o typescript)
+## Layout
 
->> yarn (Para instalar as dependências)
+UI criada a partir deste layout(https://xd.adobe.com/view/de1c9231-1542-41b5-ad00-355ebf402162-8b4f/grid/)
 
-Dependencias 
+(./layout.png)
 
->> yarn add sass
+## Para usar a aplicação:
 
->> yarn add @hookform/resolvers yup react-hook-form
+### Abre a aplicão em ambiente de desenvolvimento
 
->> yarn add json-server -D
+```bash
+git clone https://github.com/rodrigokovalski/teste-docket.git
+$ cd teste-docket
+$ yarn
+$ yarn dev
+```
 
->> yarn add axios
+### Manter processo ativo para o uso da aplicação
 
->> yarn add toastfy
+```bash
+$ yarn server
+```
+
+
