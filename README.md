@@ -10,6 +10,16 @@ UI criada a partir deste <a href="https://xd.adobe.com/view/de1c9231-1542-41b5-a
 
 OBS: Para adicionar e excluir documentos é necessário estar em ambiente de desenvolvimento, com o Json Server rodando. 
 
+## Requisitos alcançados:
+
+<img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-checked-interface-dreamstale-lineal-dreamstale-2.png"/> Utilizei Json Server para gerar a listagem, cadastro e exclusão de documentos!
+<img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-checked-interface-dreamstale-lineal-dreamstale-2.png"/> Utilizei Sass!
+<img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-checked-interface-dreamstale-lineal-dreamstale-2.png"/> Realizei validação de campos com preenchimento obrigatório!
+<img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-checked-interface-dreamstale-lineal-dreamstale-2.png"/> Adicionei máscaras de CNPJ, CPF e CEP!
+<img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-checked-interface-dreamstale-lineal-dreamstale-2.png"/> Gerei feedbacks de cadastro e exclusão de documento!
+<img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-checked-interface-dreamstale-lineal-dreamstale-2.png"/> Adicionei Empty Space com a mensagem de "Nenhum documento criado" para quando não há documentos!
+<img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-checked-interface-dreamstale-lineal-dreamstale-2.png"/> Atualizei a contagem de documentos no título da listagem, conforme os items foram adicionados e excluídos!
+
 ## Configuração do ambiente:
 
 É necessário baixar <a href="https://nodejs.org/en/download/">Node.js</a> em sua máquina.
