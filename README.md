@@ -28,7 +28,7 @@ OBS: Para adicionar e excluir documentos é necessário estar em ambiente de desen
 
 ### OBSERVAÇÕES
 
--> A UI não está 100% fiel ao layout... mudei algumas que julguei estarem fora do padrão.
+-> A UI não está 100% fiel ao layout... mudei algumas coisas que julguei que fariam mais sentido para o usuário:
 	
 	* Botão do formulário à direita
 	* Espaçamento entre os blocos maiores
