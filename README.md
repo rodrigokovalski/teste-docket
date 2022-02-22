@@ -1,17 +1,30 @@
-# Docket - Trabalhe conosco | Dev. Front-end
+# Docket - Dev. Front-end
 
 ## Layout
 
-UI criada a partir deste layout(https://xd.adobe.com/view/de1c9231-1542-41b5-ad00-355ebf402162-8b4f/grid/)
+UI criada a partir deste <a href="https://xd.adobe.com/view/de1c9231-1542-41b5-ad00-355ebf402162-8b4f/grid/">layout</a>
 
-(./layout.png)
+<img src="https://raw.githubusercontent.com/rodrigokovalski/teste-docket/master/layout.png">
+
+<a href="https://teste-docket-rodrigokovalski.vercel.app/">Versão online da UI</a>
+
+OBS: Para adicionar e excluir documentos é necessário estar em ambiente de desenvolvimento, com o Json Server rodando. 
+
+## Configuração do ambiente:
+
+É necessário baixar <a href="https://nodejs.org/en/download/">Node.js</a> em sua máquina.
+
+Para esse projeto utilizei o yarn:
+```bash
+$ npm install --global yarn
+```
 
 ## Para usar a aplicação:
 
 ### Abre a aplicão em ambiente de desenvolvimento
 
 ```bash
-git clone https://github.com/rodrigokovalski/teste-docket.git
+$ git clone https://github.com/rodrigokovalski/teste-docket.git
 $ cd teste-docket
 $ yarn
 $ yarn dev
@@ -22,5 +35,3 @@ $ yarn dev
 ```bash
 $ yarn server
 ```
-
-
