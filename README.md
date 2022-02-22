@@ -30,7 +30,7 @@ OBS: Para adicionar e excluir documentos é necessário estar em ambiente de desen
 
 É necessário baixar <a href="https://nodejs.org/en/download/">Node.js</a> em sua máquina.
 
-Para esse projeto utilizei o yarn:
+Para esse projeto utilizei o <a href="https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable">yarn</a>:
 ```bash
 $ npm install --global yarn
 ```
