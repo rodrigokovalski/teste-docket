@@ -1,4 +1,4 @@
-# Docket - Dev. Front-end
+# Teste Docket - Desenvolvedor Front-end
 
 ## Layout
 
@@ -26,6 +26,17 @@ OBS: Para adicionar e excluir documentos é necessário estar em ambiente de desen
 
 -> Atualizei a contagem de documentos no título da listagem, conforme os items foram adicionados e excluídos!
 
+### OBSERVAÇÕES
+
+-> A UI não está 100% fiel ao layout... mudei algumas que julguei estarem fora do padrão.
+	
+	* Botão do formulário à direita
+	* Espaçamento entre os blocos maiores
+	* Inputs e selects em tamanhos diferentes	
+
+-> Está 100% responsivo!
+
+
 ## Configuração do ambiente:
 
 É necessário baixar <a href="https://nodejs.org/en/download/">Node.js</a> em sua máquina.
@@ -37,8 +48,9 @@ $ npm install --global yarn
 
 ## Para usar a aplicação:
 
-### Abre a aplicão em ambiente de desenvolvimento
+### Abrir a aplicação em ambiente de desenvolvimento
 
+Terminal 1
 ```bash
 $ git clone https://github.com/rodrigokovalski/teste-docket.git
 $ cd teste-docket
@@ -48,6 +60,7 @@ $ yarn dev
 
 ### Manter processo ativo para o uso da aplicação
 
+Terminal 2
 ```bash
 $ yarn server
 ```
