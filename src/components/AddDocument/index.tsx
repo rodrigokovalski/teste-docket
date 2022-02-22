@@ -27,7 +27,7 @@ type DocumentData = {
 }
 
 const createDocumentFormSchema = yup.object().shape({
-    docName: yup.string().max(255).required('Campo obrigatório'),
+    docName: yup.string().required('Campo obrigatório'),
     personType: yup.string().default('Pessoa Física'),
 
     cpf: yup.string()
@@ -143,6 +143,7 @@ export function AddDocument(){
                             data-validate={errors.docName?.message}
                             placeholder="Digite aqui" 
                             {...register('docName')}
+                            maxLength={225}
                         />
                         { errors.docName && <span> { errors.docName.message } </span> }
                     </div>
@@ -179,6 +180,7 @@ export function AddDocument(){
                                 data-validate={errors.cpf?.message}
                                 {...register('cpf')}
                                 onChange={handleCPF}
+                                maxLength={14}
                             />
                             { errors.cpf && <span> { errors.cpf.message } </span> }
                         </div>
@@ -194,6 +196,7 @@ export function AddDocument(){
                                 placeholder="Digite aqui" 
                                 data-validate={errors.name?.message}
                                 {...register('name')}
+                                maxLength={225}
                             />
                             { errors.name && <span> { errors.name.message } </span> }
                         </div>
@@ -212,6 +215,7 @@ export function AddDocument(){
                                 data-validate={errors.cnpj?.message}
                                 {...register('cnpj')}
                                 onChange={handleCNPJ}
+                                maxLength={18}
                             />
                             { errors.cnpj && <span> { errors.cnpj.message } </span> }
                         </div>
@@ -227,6 +231,7 @@ export function AddDocument(){
                                 placeholder="Digite aqui" 
                                 data-validate={errors.razao?.message}
                                 {...register('razao')}
+                                maxLength={225}
                             />
                             { errors.razao && <span> { errors.razao.message } </span> }
                         </div>
@@ -248,6 +253,7 @@ export function AddDocument(){
                             data-validate={errors.cep?.message}
                             {...register('cep')}
                             onChange={handleCEP}
+                            maxLength={9}
                         />
                          { errors.cep && <span> { errors.cep.message } </span> }
                     </div>
@@ -266,6 +272,7 @@ export function AddDocument(){
                                     placeholder="Digite aqui" 
                                     data-validate={errors.street?.message}
                                     {...register('street')}
+                                    maxLength={225}
                                 />
                                 { errors.street && <span> { errors.street.message } </span> }
                             </div>
@@ -281,6 +288,7 @@ export function AddDocument(){
                                     placeholder="Digite aqui" 
                                     data-validate={errors.number?.message}
                                     {...register('number')}
+                                    maxLength={20}
                                 />
                                 { errors.number && <span> { errors.number.message } </span> }
                             </div>
@@ -301,6 +309,7 @@ export function AddDocument(){
                                     placeholder="Digite aqui" 
                                     data-validate={errors.city?.message}
                                     {...register('city')}
+                                    maxLength={45}
                                 />
                                 { errors.city && <span> { errors.city.message } </span> }
                             </div>
@@ -316,6 +325,7 @@ export function AddDocument(){
                                     placeholder="Digite aqui" 
                                     data-validate={errors.uf?.message}
                                     {...register('uf')}
+                                    maxLength={2}
                                 />
                                 { errors.uf && <span> { errors.uf.message } </span> }
                             </div>

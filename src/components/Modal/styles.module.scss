@@ -10,6 +10,10 @@
     .container  {
         max-width: 600px;
         width: 100%;
+        
+        @media screen and (max-width: 500px) {
+            width: 95%
+        }
 
         background: var(--white);
         
@@ -43,16 +47,16 @@
         }
 
         .footer {
-            padding: 1rem;
+            padding: 1rem 2rem;
 
             display: flex;
             justify-content: right;
-            gap: 2.5rem;
+            gap: 1.5rem;
 
             background: var(--grey-100);
 
             button {
-                padding: 8px 16px;
+                padding: 5px 15px;
                 border-radius: 1rem;
                 font-size: 0.875rem;
             }
