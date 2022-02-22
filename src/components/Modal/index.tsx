@@ -29,12 +29,12 @@ export function Modal({ closeModal , documentId }: ModalProps){
             <div className={styles.container}>
                <div className={styles.top}>
                     <div className={styles.header}>
-                        <h4>Confirmar Exclusão</h4>
+                        <h4>Confirmar exclusão</h4>
                         <button type="button" onClick={()=>{closeModal(false)}}>
                             <img src={CloseBtn} alt="" />
                         </button>
                     </div>
-                    <p>Tem certeza que deseja excluir</p>
+                    <p>Tem certeza que deseja excluir este documento?</p>
                </div>
                 <div className={styles.footer}>
                     <button className={styles.cancel} onClick={()=>{closeModal(false)}}>

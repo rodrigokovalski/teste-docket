@@ -29,17 +29,10 @@ type DocumentData = {
 const createDocumentFormSchema = yup.object().shape({
     docName: yup.string().required('Campo obrigatório'),
     personType: yup.string().default('Pessoa Física'),
-
-    cpf: yup.string()
-        .when('personType', { is: 'Pessoa Física', then: yup.string().required('Campo obrigatório') }),
-    name: yup.string()
-        .when('personType', { is: 'Pessoa Física', then: yup.string().required('Campo obrigatório') }),
-
-    cnpj: yup.string()
-        .when('personType', { is: 'Pessoa Jurídica', then: yup.string().required('Campo obrigatório') }),
-    razao: yup.string()
-        .when('personType', { is: 'Pessoa Jurídica', then: yup.string().required('Campo obrigatório') }),
-    
+    cpf: yup.string().when('personType', { is: 'Pessoa física', then: yup.string().required('Campo obrigatório') }),
+    name: yup.string().when('personType', { is: 'Pessoa física', then: yup.string().required('Campo obrigatório') }),
+    cnpj: yup.string().when('personType', { is: 'Pessoa jurídica', then: yup.string().required('Campo obrigatório') }),
+    razao: yup.string().when('personType', { is: 'Pessoa jurídica', then: yup.string().required('Campo obrigatório') }),
     cep: yup.string().required('Campo obrigatório'),
     street: yup.string().required('Campo obrigatório'),
     number: yup.number().required('Campo obrigatório').typeError('Campo obrigatório'),
@@ -96,7 +89,7 @@ export function AddDocument(){
     });
 
     const handleCreateDocument: SubmitHandler<DocumentData> = async( values ) => {
-        let mes = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+        let mes = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
         var today = new Date(),
             date = today.getDate() + ' de ' + (mes[today.getMonth()]) + ' de ' + today.getFullYear() ;
             
@@ -161,8 +154,8 @@ export function AddDocument(){
                                 setIsPersonType(e.target.value)
                             }}
                         >
-                            <option value="Pessoa Física">Pessoa Física</option>
-                            <option value="Pessoa Jurídica">Pessoa Jurídica</option>
+                            <option className={styles.option} value="Pessoa física">Pessoa física</option>
+                            <option className={styles.option} value="Pessoa jurídica">Pessoa jurídica</option>
                         </select>
                     </div>
 

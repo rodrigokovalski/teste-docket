@@ -22,7 +22,17 @@
             border-radius: 2px;
             font-size: 0.875rem;
             text-align: right;
-            white-space: nowrap
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            div {
+                width: 0.5rem;
+                height: 0.5rem;
+                border-radius: 50%;
+                background: #000
+            }
         }
     }
 

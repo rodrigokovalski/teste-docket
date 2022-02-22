@@ -1,12 +1,23 @@
+import { useState } from 'react';
 import styles from './styles.module.scss'
 
 export function DocLead() {
+
+    const [ status , setStatus ] = useState("Finalizado");
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
                 <h2>Lead: Documento para criar contato</h2>
                 <div className={styles.status}>
-                    Em andamento
+                   <div 
+                        style={
+                            status === "Finalizado" ? 
+                            {backgroundColor: "#00B98E"}
+                            :
+                            {backgroundColor: "#FFAF3E"}
+                        }></div>
+                        {status}
                 </div>
             </div>
             <div className={styles.content}>

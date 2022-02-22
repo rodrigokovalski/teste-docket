@@ -81,7 +81,7 @@ export function DocsRequested() {
                             <div className={styles.data}>
                                 <div className={styles.personal}>
                                     <h6><strong>{document.personType}</strong></h6>
-                                    {document.personType === "Pessoa Física" ? (
+                                    {document.personType === "Pessoa física" ? (
                                         <>
                                             <p>Nome: {document.name}</p>
                                             <p>CPF: {document.cpf}</p>
