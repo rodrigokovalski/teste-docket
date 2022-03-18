@@ -172,7 +172,7 @@ export function AddDocument(){
                                 placeholder="Digite aqui" 
                                 data-validate={errors.cpf?.message}
                                 {...register('cpf')}
-                                onChange={handleCPF}
+                                onChangeCapture={handleCPF}
                                 maxLength={14}
                             />
                             { errors.cpf && <span> { errors.cpf.message } </span> }
@@ -207,7 +207,7 @@ export function AddDocument(){
                                 placeholder="Digite aqui" 
                                 data-validate={errors.cnpj?.message}
                                 {...register('cnpj')}
-                                onChange={handleCNPJ}
+                                onChangeCapture={handleCNPJ}
                                 maxLength={18}
                             />
                             { errors.cnpj && <span> { errors.cnpj.message } </span> }
@@ -245,7 +245,7 @@ export function AddDocument(){
                             placeholder="Digite aqui" 
                             data-validate={errors.cep?.message}
                             {...register('cep')}
-                            onChange={handleCEP}
+                            onChangeCapture={handleCEP}
                             maxLength={9}
                         />
                          { errors.cep && <span> { errors.cep.message } </span> }
